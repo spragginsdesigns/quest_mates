@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# QuestMates 🎮
 
-## Getting Started
+Find your perfect Player 2! QuestMates is a modern web platform that connects gamers based on their gaming preferences, schedules, and play styles. 
 
-First, run the development server:
+## Features ✨
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Interactive Landing Page** with Three.js particle effects and smooth animations
+- **Smart Matching System** based on gaming preferences and schedules
+- **Real-time Chat** for matched players
+- **Modern UI** with dark mode and gradient themes
+- **Responsive Design** that works on all devices
+
+## Tech Stack 🛠️
+
+- **Frontend**: Next.js 14.1.0
+- **Styling**: Tailwind CSS, Shadcn UI
+- **Animations**: Framer Motion
+- **3D Effects**: Three.js
+- **Authentication**: Clerk
+- **Backend/Database**: Convex
+- **Package Manager**: pnpm
+
+## Getting Started 🚀
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/spragginsdesigns/quest_mates.git
+   cd quest_mates
+   ```
+2. **Install dependencies**
+
+   ```bash
+   pnpm install
+   ```
+3. **Set up environment variables**
+
+   ```bash
+   # Create a .env.local file and add your keys
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+   CLERK_SECRET_KEY=your_clerk_secret_key
+   CONVEX_DEPLOYMENT=your_convex_deployment_url
+   ```
+4. **Run the development server**
+
+   ```bash
+   pnpm dev
+   ```
+5. **Open [http://localhost:3000](http://localhost:3000)** to see the app
+
+## Project Structure 📁
+
+```
+quest_mates/
+├── src/
+│   ├── app/              # Next.js app router pages
+│   ├── components/       # React components
+│   │   ├── landing/     # Landing page components
+│   │   └── ui/          # Reusable UI components
+│   └── lib/             # Utility functions
+├── public/              # Static assets
+└── docs/               # Project documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development Guidelines 📝
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Use TypeScript for type safety
+- Follow the "use client" directive for client-side components
+- Maintain consistent code formatting
+- Write meaningful commit messages
+- Test thoroughly before pushing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contributing 🤝
 
-## Learn More
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-To learn more about Next.js, take a look at the following resources:
+## License 📄
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Acknowledgments 🙏
 
-## Deploy on Vercel
+- [Next.js](https://nextjs.org/) - The React Framework
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [Shadcn UI](https://ui.shadcn.com/) - UI Component library
+- [Framer Motion](https://www.framer.com/motion/) - Animation library
+- [Three.js](https://threejs.org/) - 3D graphics library
+- [Clerk](https://clerk.dev/) - Authentication and user management
+- [Convex](https://www.convex.dev/) - Backend as a service
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with ❤️ for gamers by gamers | Austin Spraggins & Queekos
