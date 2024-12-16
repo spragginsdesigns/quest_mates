@@ -5,6 +5,8 @@ import { FeaturesSection } from "@/components/landing/features-section";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Gamepad, Trophy, Star } from "lucide-react";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import Link from "next/link";
 
 const floatingIcons = [
 	{ icon: <Gamepad className="w-6 h-6" />, delay: 0 },
@@ -81,20 +83,46 @@ export default function Home() {
 							transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
 							className="flex flex-col sm:flex-row gap-4 mt-8"
 						>
-							<Button
-								size="lg"
-								className="relative group bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 transition-all duration-300"
-							>
-								<span className="relative z-10">Get Started</span>
-								<div className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0%,_transparent_100%)] blur-md" />
-							</Button>
-							<Button
-								size="lg"
-								variant="outline"
-								className="border-purple-500/20 hover:border-purple-500/40 transition-colors duration-300"
-							>
-								Learn More
-							</Button>
+							<SignedOut>
+								<Link href="/sign-up">
+									<Button
+										size="lg"
+										className="relative group bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 transition-all duration-300"
+									>
+										<span className="relative z-10">Get Started</span>
+										<div className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0%,_transparent_100%)] blur-md" />
+									</Button>
+								</Link>
+								<Link href="/sign-in">
+									<Button
+										size="lg"
+										variant="outline"
+										className="border-purple-500/20 hover:border-purple-500/40 transition-colors duration-300"
+									>
+										Sign In
+									</Button>
+								</Link>
+							</SignedOut>
+							<SignedIn>
+								<Link href="/dashboard">
+									<Button
+										size="lg"
+										className="relative group bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 transition-all duration-300"
+									>
+										<span className="relative z-10">Go to Dashboard</span>
+										<div className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0%,_transparent_100%)] blur-md" />
+									</Button>
+								</Link>
+								<Link href="/profile">
+									<Button
+										size="lg"
+										variant="outline"
+										className="border-purple-500/20 hover:border-purple-500/40 transition-colors duration-300"
+									>
+										View Profile
+									</Button>
+								</Link>
+							</SignedIn>
 						</motion.div>
 
 						{/* Benefits text */}

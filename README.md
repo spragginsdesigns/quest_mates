@@ -1,14 +1,47 @@
 # QuestMates 🎮
 
-Find your perfect Player 2! QuestMates is a modern web platform that connects gamers based on their gaming preferences, schedules, and play styles. 
+Find your perfect Player 2! QuestMates is a modern web platform that connects gamers based on their gaming preferences, schedules, and play styles.
 
 ## Features ✨
 
+### Completed ✅
+
 - **Interactive Landing Page** with Three.js particle effects and smooth animations
-- **Smart Matching System** based on gaming preferences and schedules
-- **Real-time Chat** for matched players
 - **Modern UI** with dark mode and gradient themes
 - **Responsive Design** that works on all devices
+
+### In Development 🚧
+
+- **Smart Profile Creation**
+  - Multi-step profile wizard
+  - Gaming preferences quiz
+  - Schedule matching system
+  - Avatar customization
+- **Authentication System**
+  - Social login with Discord/Google
+  - Secure user sessions
+  - Protected routes
+- **Matching System**
+  - Preference-based matching
+  - Schedule compatibility
+  - Play style alignment
+
+### Coming Soon 🔜
+
+- **Real-time Chat** for matched players
+- **Game Library Integration**
+- **Team Formation Tools**
+
+## Current Focus 🎯
+
+We're currently working on the authentication and profile creation system. This includes:
+
+- Setting up Clerk authentication
+- Creating a multi-step profile wizard
+- Implementing gaming preferences selection
+- Building a schedule matching system
+
+Check out our [project notes](./Docs/questmates_notes.md) for detailed development plans and progress.
 
 ## Tech Stack 🛠️
 
@@ -28,11 +61,13 @@ Find your perfect Player 2! QuestMates is a modern web platform that connects ga
    git clone https://github.com/spragginsdesigns/quest_mates.git
    cd quest_mates
    ```
+
 2. **Install dependencies**
 
    ```bash
    pnpm install
    ```
+
 3. **Set up environment variables**
 
    ```bash
@@ -41,11 +76,13 @@ Find your perfect Player 2! QuestMates is a modern web platform that connects ga
    CLERK_SECRET_KEY=your_clerk_secret_key
    CONVEX_DEPLOYMENT=your_convex_deployment_url
    ```
+
 4. **Run the development server**
 
    ```bash
    pnpm dev
    ```
+
 5. **Open [http://localhost:3000](http://localhost:3000)** to see the app
 
 ## Project Structure 📁

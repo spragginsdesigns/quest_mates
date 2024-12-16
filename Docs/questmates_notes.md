@@ -114,14 +114,132 @@ pnpm add framer-motion lucide-react @radix-ui/react-icons
 
 ## Next Steps
 
-1. ✅ Set up shadcn/ui components
-2. ✅ Create immersive landing page hero
-3. ✅ Add animated feature cards
-4. ✅ Fix client-side rendering issues
-5. 🔄 Add game matching preview section
-6. Implement Clerk authentication
-7. Design and implement the game card system
-8. Set up Convex backend infrastructure
+### Phase 1: Authentication & Profile Creation 🔐
+
+#### 1. Authentication Setup (Next Task)
+
+- [ ] Set up Clerk authentication
+  - [ ] Implement sign-up/sign-in pages
+  - [ ] Add social auth (Discord, Google, etc.)
+  - [ ] Create protected routes
+  - [ ] Add auth middleware
+  - [ ] Design auth pages with our theme
+
+#### 2. Profile Creation Flow 🎮
+
+- [ ] Multi-step profile wizard
+  1. Basic Info
+     - Username/Gamertag
+     - Profile picture/avatar
+     - Timezone/Location
+     - Age/Birthday
+  2. Gaming Preferences
+     - Favorite genres
+     - Preferred platforms
+     - Competitive vs. Casual
+     - Favorite games (searchable list)
+  3. Play Style Quiz
+     - Gaming schedule
+     - Communication preferences
+     - Team role preferences
+     - Gaming goals
+  4. Social Preferences
+     - Voice chat comfort level
+     - Language preferences
+     - Team size preferences
+     - Streaming/Content creation interests
+
+#### 3. Database Schema (Convex)
+
+```typescript
+// User Profile
+interface UserProfile {
+	id: string;
+	clerkId: string;
+	username: string;
+	avatarUrl: string;
+	timezone: string;
+	birthday: Date;
+	createdAt: Date;
+	updatedAt: Date;
+}
+
+// Gaming Preferences
+interface GamingPreferences {
+	userId: string;
+	favoriteGenres: string[];
+	platforms: string[];
+	playStyle: "Casual" | "Competitive" | "Both";
+	favoriteGames: string[];
+	availability: {
+		weekday: TimeRange[];
+		weekend: TimeRange[];
+	};
+}
+
+// Social Preferences
+interface SocialPreferences {
+	userId: string;
+	voiceChatPreference: "Always" | "Sometimes" | "Never";
+	languages: string[];
+	teamSize: "Solo" | "Small" | "Large";
+	contentCreator: boolean;
+}
+```
+
+### Implementation Order
+
+1. **Authentication (Week 1)**
+
+   - Set up Clerk
+   - Create auth pages
+   - Implement protected routes
+
+2. **Profile Creation UI (Week 2)**
+
+   - Design profile wizard components
+   - Implement step navigation
+   - Add form validation
+   - Create progress indicator
+
+3. **Database Integration (Week 3)**
+
+   - Set up Convex
+   - Implement data models
+   - Create API endpoints
+   - Add data validation
+
+4. **Profile Features (Week 4)**
+   - Add avatar upload/customization
+   - Implement game search/selection
+   - Add schedule selector
+   - Create profile preview
+
+### UI Components Needed
+
+- [ ] `AuthLayout` - Layout for auth pages
+- [ ] `ProfileWizard` - Multi-step form container
+- [ ] `GameSearch` - Searchable game selector
+- [ ] `ScheduleSelector` - Visual schedule picker
+- [ ] `AvatarUpload` - Profile picture upload
+- [ ] `ProfilePreview` - Profile card preview
+- [ ] `GenreSelector` - Gaming genre picker
+- [ ] `PlatformSelector` - Gaming platform picker
+
+### API Endpoints Needed
+
+```typescript
+// Convex Functions
+- createUserProfile(data: UserProfileData)
+- updateUserProfile(id: string, data: Partial<UserProfileData>)
+- getUserProfile(id: string)
+- updateGamingPreferences(userId: string, data: GamingPreferencesData)
+- updateSocialPreferences(userId: string, data: SocialPreferencesData)
+```
+
+## Current Development Focus
+
+Moving from landing page to authentication and profile creation, focusing on creating an engaging and intuitive user onboarding experience.
 
 ## Development Guidelines
 
