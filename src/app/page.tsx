@@ -1,101 +1,117 @@
-import Image from "next/image";
+"use client";
+
+import { ParticleContainer } from "@/components/landing/particle-container";
+import { FeaturesSection } from "@/components/landing/features-section";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Gamepad, Trophy, Star } from "lucide-react";
+
+const floatingIcons = [
+	{ icon: <Gamepad className="w-6 h-6" />, delay: 0 },
+	{ icon: <Trophy className="w-6 h-6" />, delay: 0.1 },
+	{ icon: <Star className="w-6 h-6" />, delay: 0.2 }
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+	return (
+		<main className="relative min-h-screen overflow-hidden">
+			{/* Particle effect container */}
+			<div className="absolute inset-0 z-0">
+				<ParticleContainer />
+			</div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+			{/* Background gradient overlay */}
+			<div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/80 to-background z-0" />
+
+			{/* Hero Section */}
+			<div className="relative z-10">
+				<div className="container mx-auto px-4 py-24 sm:py-32">
+					<div className="flex flex-col items-center text-center space-y-8">
+						{/* Floating gaming icons */}
+						<div className="relative w-full max-w-2xl h-24">
+							{floatingIcons.map((item, index) => (
+								<motion.div
+									key={index}
+									className="absolute left-1/2 text-purple-400/30"
+									initial={{ opacity: 0, y: 20 }}
+									animate={{
+										opacity: [0.2, 0.5, 0.2],
+										y: [-20, 20, -20],
+										x: [-50 + index * 50, -30 + index * 30, -50 + index * 50]
+									}}
+									transition={{
+										duration: 5,
+										delay: item.delay,
+										repeat: Infinity,
+										ease: "easeInOut"
+									}}
+								>
+									{item.icon}
+								</motion.div>
+							))}
+						</div>
+
+						{/* Main heading with animated gradient */}
+						<motion.h1
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.8, ease: "easeOut" }}
+							className="text-4xl sm:text-6xl font-bold"
+						>
+							<span className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-600 animate-gradient bg-300% pb-2">
+								Find Your Perfect Player 2
+							</span>
+						</motion.h1>
+
+						{/* Subtitle with fade-in animation */}
+						<motion.p
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+							className="text-xl sm:text-2xl text-muted-foreground max-w-2xl"
+						>
+							Connect with gamers who share your passion, schedule, and
+							playstyle. Your next gaming adventure begins here.
+						</motion.p>
+
+						{/* CTA buttons with enhanced hover effects */}
+						<motion.div
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+							className="flex flex-col sm:flex-row gap-4 mt-8"
+						>
+							<Button
+								size="lg"
+								className="relative group bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 transition-all duration-300"
+							>
+								<span className="relative z-10">Get Started</span>
+								<div className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0%,_transparent_100%)] blur-md" />
+							</Button>
+							<Button
+								size="lg"
+								variant="outline"
+								className="border-purple-500/20 hover:border-purple-500/40 transition-colors duration-300"
+							>
+								Learn More
+							</Button>
+						</motion.div>
+
+						{/* Benefits text */}
+						<motion.p
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 0.8, delay: 0.6 }}
+							className="text-sm text-muted-foreground/60"
+						>
+							Free to join • Find matches instantly • 1000+ active players
+						</motion.p>
+					</div>
+				</div>
+			</div>
+
+			{/* Features Section */}
+			<FeaturesSection />
+		</main>
+	);
 }
